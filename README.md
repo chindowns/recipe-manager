@@ -1,1 +1,1 @@
-# recipe-manager
+# Recipe Manager
