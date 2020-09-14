@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             unique: true
         },
-
         name: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -21,11 +20,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, { timestamps: false } );
 
-    // User.associate = models => {
-    //     User.hasMany(models.UserRecipe);
+    User.associate = models => {
+        User.belongsToMany(models.Recipe, {through: models.UserRecipe});
+        User.hasMany(models.UserRecipe);
 
-    //     User.hasMany(models.Recipe);
-    // };
+        User.hasMany(models.Recipe);
+    };
 
     return User;
 };
