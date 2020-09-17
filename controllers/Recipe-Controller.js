@@ -13,7 +13,7 @@ module.exports = {
     db.Recipe.create(req.body)
 
       .then(dbRecipe => {
-        console.log(dbRecipe);
+        // console.log(dbRecipe);
         let RecipeId = dbRecipe.dataValues.id;
         // Adds the directions by mapping the directions array.  
         //The step and RecipeId are determined by recipe response and order in the array.
@@ -35,41 +35,40 @@ module.exports = {
           const { specifics, amount, measurement } = Recipe_Ingredient;
 
           // DB LOOKUP for the name and create if it doesn't exist
+          // findOrCreate returns an ARRAY.  dbIngredient is [dbInstance, createdBoolean]
           db.Ingredient.findOrCreate({ where: { "name": name }})
-            .then(dbIngredient => {
-              let IngredientId = dbIngredient[0].id;
+            .then(resultArr => {
+              let ingredientId = resultArr[0].id;
 
               db.Recipe_Ingredient.create({
                 "specifics": specifics,
                 "amount": amount,
                 "measurement": measurement,
-                "IngredientId": IngredientId,
+                "IngredientId": ingredientId,
                 "RecipeId": RecipeId
-
               })
             })
+            .catch(err => {throw err})
         })
 
         // Add the tags to Ingredient and Recipe_Tag table
         tags.map(tag => {
-          console.log(`Add Tag: ${tag.tag}`);
-          const {category} = tag.Recipe_Tag;
+          console.log(`Add Tag: ${tag.name}`);
 
-          db.Tag.findOrCreate({where: {"tag": tag.tag}})
-            category ? 
-            db.Recipe_Tag.create({
-              "category": category,
-              "RecipeId": RecipeId,
-              "TagTag": tag.Recipe_Tag.tag
+          db.Tag.findOrCreate({where: {"name": tag.name }})
+            // findOrCreate returns an array [dbInstance, createdBoolean]
+            .then(resultArr => {
+              const [dbTag, created] = resultArr
+              console.log(dbTag)
+              db.Recipe_Tag.create({
+                "RecipeId": RecipeId,
+                "TagName": dbTag.name
+              })
             })
-            :
-            db.Recipe_Tag.create({
-              "RecipeId": RecipeId,
-              "TagTag": tag.Recipe_Tag.tag
-            })
+            .catch(err => {throw err})
         })
 
-        res.json(dbRecipe.dataValues.id)
+        res.json(dbRecipe.dataValues)
       })
 
       .catch(err => res.status(422).json(err));
