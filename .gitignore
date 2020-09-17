@@ -49,6 +49,9 @@ jspm_packages/
 
 package-lock.json
 
+# Scraping directories
+scraping/
+
 # TypeScript v1 declaration files
 typings/
 
