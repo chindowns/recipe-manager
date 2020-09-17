@@ -38,13 +38,13 @@ module.exports = {
           // findOrCreate returns an ARRAY.  dbIngredient is [dbInstance, createdBoolean]
           db.Ingredient.findOrCreate({ where: { "name": name }})
             .then(resultArr => {
-              let ingredientId = resultArr[0].id;
+              let ingredientName = resultArr[0].name;
 
               db.Recipe_Ingredient.create({
                 "specifics": specifics,
                 "amount": amount,
                 "measurement": measurement,
-                "IngredientId": ingredientId,
+                "IngredientName": ingredientName,
                 "RecipeId": RecipeId
               })
             })

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             primaryKey: true
         }
-    });
+    }, { timestamps: false});
     
     Tag.associate = models => {
         Tag.belongsToMany(models.Recipe, { through: models.Recipe_Tag });
