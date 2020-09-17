@@ -26,7 +26,7 @@ getSearchList((searchList) => {
         console.log(`Get ${url}`)
         axios.get(url).then(response => {
             let recipe = {};
-            let tagArr = [];
+            let tagsArr = [];
             let ingredientsArr = [];
             let directionsArr = [];
 
@@ -60,34 +60,25 @@ getSearchList((searchList) => {
             // course push to tag 
             $("span.wprm-recipe-course").each((i, element) => {
                 let tagCourse = {
-                    "tag": $(element).text(),
-                    "Recipe_Tag": {
-                        "category": "course"
-                    }
+                    "name": $(element).text()
                 }
-                tagArr.push(tagCourse);
+                tagsArr.push(tagCourse);
             })
 
             // cuisine push to tag
             $("span.wprm-recipe-cuisine").each((i, element) => {
                 let tagCuisine = {
-                    "tag": $(element).text(),
-                    "Recipe_Tag": {
-                        "catgory": "cuisine"
-                    }
+                    "name": $(element).text()
                 }
-                tagArr.push(tagCuisine);
+                tagsArr.push(tagCuisine);
             })
 
             // keyword push to tag
             $("span.wprm-recipe-keyword").each((i, element) => {
                 let tagKeyword = {
-                    "tag": $(element).text(),
-                    "Recipe_Tag": {
-                        "catgory": "keyword"
+                    "name": $(element).text()
                     }
-                }
-                tagArr.push(tagKeyword);
+                tagsArr.push(tagKeyword);
             })
 
 
@@ -119,7 +110,7 @@ getSearchList((searchList) => {
             })
 
             let ingredients = JSON.stringify(ingredientsArr)
-            let tags = JSON.stringify(tagArr);
+            let tags = JSON.stringify(tagsArr);
             recipe = JSON.stringify({
                 name: recipe_name,
                 source: recipe_source,
@@ -127,8 +118,8 @@ getSearchList((searchList) => {
                 activeTime: recipe_activeTime,
                 totalTime: recipe_totalTime,
                 directions: directionsArr,
-                ingredients: ingredients,
-                tags: tags
+                ingredients: ingredientsArr,
+                tags: tagsArr
             });
             const config = {
                 method: 'post',
@@ -142,8 +133,9 @@ getSearchList((searchList) => {
                 .then(resp => console.log(resp.data))
                 .catch(err => console.log(err));
 
-            fs.appendFile('../twol.json', recipe + ',\n')
+            fs.appendFile('../twol.json', recipe + ',\n', (err)=>{
+                if (err) {throw err}
+            })
         })
     })
-    writeToFile(recipeArr);
 })
