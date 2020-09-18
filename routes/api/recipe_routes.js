@@ -16,7 +16,7 @@ router
 
 // Matches with "/api/recipe/one/:recipeId"
 router
-  .route("/one/:recipeId")
+  .route("/one/:id")
   .get(recipe.findOne)
   // .put(recipe.update)
   .delete(recipe.delete);

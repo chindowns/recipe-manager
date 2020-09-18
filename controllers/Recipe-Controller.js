@@ -1,5 +1,7 @@
 const { Op } = require("sequelize");
 const db = require("../models");
+// Set Ingredient name and Tag name to trimmed lower case.
+const setToLowerCase = require('../utils/setToLowerCase')
 
 // Defining methods for the RecipeController
 module.exports = {
@@ -18,7 +20,7 @@ module.exports = {
         // Adds the directions by mapping the directions array.  
         //The step and RecipeId are determined by recipe response and order in the array.
         directionSteps.map((direction, id) => {
-          console.log(`Add Direction RECIPEID: ${RecipeId}  STEP: ${id}`)
+          // console.log(`Add Direction RECIPEID: ${RecipeId}  STEP: ${id}`)
           db.Direction.create({
             step: id + 1,
             direction: direction,
@@ -30,13 +32,13 @@ module.exports = {
 
         // Add the ingredients to Ingredient and Recipe_Ingredient tables
         ingredients.map(ingredient => {
-          console.log(`Add Ingredient: ${ingredient.name}`);
+          // console.log(`Add Ingredient: ${ingredient.name}`);
           const { name, id, Recipe_Ingredient } = ingredient
           const { specifics, amount, measurement } = Recipe_Ingredient;
 
           // DB LOOKUP for the name and create if it doesn't exist
           // findOrCreate returns an ARRAY.  dbIngredient is [dbInstance, createdBoolean]
-          db.Ingredient.findOrCreate({ where: { "name": name }})
+          db.Ingredient.findOrCreate({ where: { "name": setToLowerCase(name) }})
             .then(resultArr => {
               let ingredientName = resultArr[0].name;
 
@@ -53,9 +55,10 @@ module.exports = {
 
         // Add the tags to Ingredient and Recipe_Tag table
         tags.map(tag => {
-          console.log(`Add Tag: ${tag.name}`);
+          // console.log(`Add Tag: ${tag.name}`);
+          // let name = tag.name.trim().toLowerCase();
 
-          db.Tag.findOrCreate({where: {"name": tag.name }})
+          db.Tag.findOrCreate({where: {"name": setToLowerCase(tag.name) }})
             // findOrCreate returns an array [dbInstance, createdBoolean]
             .then(resultArr => {
               const [dbTag, created] = resultArr
@@ -108,12 +111,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findOne: function (req, res) {
+  findOne: (req, res) => {
     db.Recipe.findOne({
-      where: { id: req.params.recipeId },
-      include: [db.UserRecipe,
-      db.RecipeIngredient,
-      db.RecipeTag]
+      where: { id: req.params.id },
+      include: [db.User_Recipe,
+      db.Recipe_Ingredient,
+      db.Recipe_Tag]
     })
       .then(dbRecipe => res.json(dbRecipe))
       .catch(err => res.status(422).json(err));
@@ -123,13 +126,13 @@ module.exports = {
   update: function (req, res) {
     // console.log("request was made")
     db.Recipe.update(req.body,
-      { where: { id: req.body.recipeId } })
+      { where: { id: req.body.id } })
       .then(dbRecipe => res.json(dbRecipe))
       .catch(err => res.status(422).json(err));
   },
 
   delete: function (req, res) {
-    db.Recipe.findAll({ id: req.params.recipeId })
+    db.Recipe.findAll({ id: req.params.id })
       .then(dbRecipe => dbRecipe.destroy())
       .then(dbRecipe => res.json(dbRecipe))
       .catch(err => res.status(422).json(err));
