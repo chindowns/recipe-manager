@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
             comment: DataTypes.TEXT,
             // when the recipe is copied into a user's recipe list, the original ID set for tracking
             originalRecipeKey: DataTypes.STRING,
-        }, 
-        { timestamps: false }
-    );
+        });
 
     return User_Recipe;
 };

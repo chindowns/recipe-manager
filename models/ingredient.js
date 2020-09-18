@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true
         }
-    }, { timestamps: false });
+    });
 
     Ingredient.associate = models => {
         Ingredient.belongsToMany(models.Recipe, {through: models.Recipe_Ingredient});

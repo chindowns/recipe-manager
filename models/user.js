@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
                 isEmail: true
             }
         }
-    }, { timestamps: false } );
+    });
 
     User.associate = models => {
         User.belongsToMany(models.Recipe, {through: models.User_Recipe});

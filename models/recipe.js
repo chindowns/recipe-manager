@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         ratingAverage: DataTypes.FLOAT,
         ratingCount: DataTypes.INTEGER,
         ratingTotal: DataTypes.INTEGER
-    }, { timestamps: false  });
+    });
 
     Recipe.associate = models => {
         Recipe.belongsToMany(models.User, {through: models.User_Recipe});

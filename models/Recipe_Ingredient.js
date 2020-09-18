@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         measurement: DataTypes.STRING
         //IngredientId
         //RecipeId
-    },{ timestamps: false });
+    });
 
     return Recipe_Ingredient;
 }
