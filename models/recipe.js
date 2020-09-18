@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         photo: DataTypes.STRING,
-        servingSize: DataTypes.STRING,
+        servings: DataTypes.STRING,
         activeTime: DataTypes.INTEGER,
         totalTime: DataTypes.INTEGER,
         // directions: DataTypes.TEXT,
