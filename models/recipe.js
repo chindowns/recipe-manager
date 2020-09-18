@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         totalTime: DataTypes.INTEGER,
         // directions: DataTypes.TEXT,
         source: DataTypes.TEXT,
+        sourceLink: DataTypes.STRING,
         ratingAverage: DataTypes.FLOAT,
         ratingCount: DataTypes.INTEGER,
         ratingTotal: DataTypes.INTEGER
