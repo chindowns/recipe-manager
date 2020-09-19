@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.red {
+  color: #f21519;
+}
+
+.background-red {
+  background-color: #f21519;
+}
+
+.background-red-semitransparent {
+  background-color: #f2181bbf;
+}
+
+.peach {
+  color: #fc9572;
+  }
+  
+.background-peach {
+  background-color: #fc9572;
+  }
+  
+.background-peach-semitransparent {
+    background-color: #fc9472bf;
+  }
+
+.green {
+  color: #cdbf18;
+  }
+  
+.background-green {
+  background-color: #cdbf18;
+  }
+  
+.background-green-semitransparent {
+    background-color: #cdbe18bf;
+  }
+
+.olive {
+  color: #4e5d1b;
+  }
+  
+.background-olive {
+  background-color: #4e5d1b;
+  }
+  
+.background-olive-semitransparent {
+    background-color: #4e5d1bbf;
+  }
+  
+.white {
+  color: #e2e2e0;
+  }
+  
+.background-white {
+  background-color: #e2e2e0;
+  }
+  
+.background-white-semitransparent {
+    background-color: #e2e2e0bf;
+  }
+
+.blue {
+  color: #cdbf18;
+  }
+  
+.background-blue {
+  background-color: #cdbf18;
+  }
+  
+.background-blue-semitransparent {
+    background-color: #cdbe18bf;
+  }
+
+.darkerblue {
+  color: #303f79;
+  }
+  
+.background-derarkblue {
+  background-color: #303f79;
+  }
+  
+.background-darkerblue-semitransparent {
+    background-color: #303f79bf;
+  }
+  
