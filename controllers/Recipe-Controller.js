@@ -49,6 +49,7 @@ module.exports = {
                 "IngredientName": ingredientName,
                 "RecipeId": RecipeId
               })
+              .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
         })
@@ -67,6 +68,7 @@ module.exports = {
                 "RecipeId": RecipeId,
                 "TagName": dbTag.name
               })
+              .catch(err => console.log(err))
             })
             .catch(err => console.log(err))
         })
