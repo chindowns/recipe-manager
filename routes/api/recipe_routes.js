@@ -8,11 +8,15 @@ router
   .post(recipe.create)
   .put(recipe.update)
 
-//matches with "/api/recipe/all/top"
-
+// matches with "/api/recipe/search/:search-:userId"
 router
-  .route("/all/top")
-  .get(recipe.findTop25)
+  .route("/search/:search-:userId")
+  .get(recipe.search)
+
+//matches with "/api/recipe/user/:userid"
+router
+  .route("/user/:userId")
+  .get(recipe.findUserRecipes)
 
 // Matches with "/api/recipe/one/:recipeId"
 router

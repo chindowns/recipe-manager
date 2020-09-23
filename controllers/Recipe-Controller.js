@@ -80,22 +80,34 @@ module.exports = {
   findAll: function (req, res) {
     db.Recipe.findAll({
       limit: 25,
+      order: [['ratingAverage', 'DESC']],
       include: {
-        model: db.Recipe,
-        include: db.Ingredient
+        model: db.Direction,
+        model: db.Ingredient,
+        model: db.Tag
+        
       }
     })
       .then(dbRecipes => res.json(dbRecipes))
       .catch(err => res.status(422).json(err));
   },
 
-  findTop25: function (req, res) {
+  // findTop25: function (req, res) {
+  //   db.Recipe.findAll({
+  //     order: [['ratingAverage', 'DESC']],
+  //     limit: 25
+  //   })
+  //     .then(dbRecipe => res.json(dbRecipe))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
+  findUserRecipes: (req, res) => {
     db.Recipe.findAll({
-      order: [['ratingAverage', 'DESC']],
-      limit: 25
+      include: {
+        model: User_Recipe,
+        where: {UserId: req.params.userId}
+      }
     })
-      .then(dbRecipe => res.json(dbRecipe))
-      .catch(err => res.status(422).json(err));
   },
 
   search: function (req, res) {

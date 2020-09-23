@@ -1,17 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Header from './components/Header'
 
 function App() {
-
+  const [modalShow, setModalShow] = React.useState(fasle);
+  
 
 return (
   <>
-  <header>
-    <h1 className="red">Recipe Organizer</h1>
-    <Nav/>
-    <Profile/>
-  </header>
+  <Header />
 
   <Provider>
 
@@ -22,9 +20,18 @@ return (
       <Route exact path="/my-recipes" component={MyRecipes} />
     </Switch>
 
-    <ModalAddRecipe />
-    <ModalDirections />
-    <ModalSignIn />
+      <ModalAddRecipe 
+        show={modalRecipeShow}
+        onHide={() => setModalShow(false)}
+      />
+      <ModalDirections 
+        show={modalDirectionsShow}
+        onHide={() => setModalShow(false)}
+      />
+      <ModalSignIn 
+        show={modalSignInShow}
+        onHide={() => setModalShow(false)}
+      />
 
   </Provider>
 
