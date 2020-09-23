@@ -26,7 +26,7 @@ module.exports = {
             direction: direction,
             RecipeId: RecipeId
           })
-            // .then(dbDirection => res.sendStatus(200))
+            .then(dbDirection => res.sendStatus(200))
             .catch(err => res.status(422).json(err))
         })
 
@@ -50,7 +50,7 @@ module.exports = {
                 "RecipeId": RecipeId
               })
             })
-            .catch(err => {throw err})
+            .catch(err => console.log(err))
         })
 
         // Add the tags to Ingredient and Recipe_Tag table
@@ -68,7 +68,7 @@ module.exports = {
                 "TagName": dbTag.name
               })
             })
-            .catch(err => {throw err})
+            .catch(err => console.log(err))
         })
 
         res.json(dbRecipe.dataValues)
