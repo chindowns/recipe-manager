@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Header from './components/Header';
@@ -10,40 +10,32 @@ import MyRecipes from './pages/MyRecipes';
 import ModalAddRecipe from './components/AddRecipe-Modal';
 import ModalDirections from './components/Directions-Modal';
 import ModalSignIn from './components/SignIn-Modal';
-import Provider, {useContext} from './utils/Provider';
+// import Provider, {useContext} from './utils/Provider';
 
 function App() {
-  const [modalRecipeShow, setModalRecipeShow] = React.useState(false);
-  const [modalDirectionsShow, setmodalDirectionsShow] = React.useState(false);
-  const [modalSignInShow, setmodalSignInShow] = React.useState(false);
+  const [modalRecipeShow, setModalRecipeShow] = useState(false);
+  const [modalDirectionsShow, setmodalDirectionsShow] = useState(false);
+  const [modalSignInShow, setmodalSignInShow] = useState(false);
   
 return (
   <>
   <Header />
 
-  <Provider>
-
+  {/* <Provider> */}
+    <Router>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/browse" component={Browse} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/my-recipes" component={MyRecipes} />
     </Switch>
+    </Router>
 
-      <ModalAddRecipe 
-        show={modalRecipeShow}
-        onHide={() => setModalRecipeShow(false)}
-      />
-      <ModalDirections 
-        show={modalDirectionsShow}
-        onHide={() => setmodalDirectionsShow(false)}
-      />
-      <ModalSignIn 
-        show={modalSignInShow}
-        onHide={() => setmodalSignInShow(false)}
-      />
+      {/* <ModalAddRecipe show={modalRecipeShow} onHide={() => setModalRecipeShow(false)} /> */}
+      {/* <ModalDirections show={modalDirectionsShow} onHide={() => setmodalDirectionsShow(false)} /> */}
+      {/* <ModalSignIn show={modalSignInShow} onHide={() => setmodalSignInShow(false)} /> */}
 
-  </Provider>
+  {/* </Provider> */}
 
   <Footer />
 
