@@ -19,9 +19,7 @@ export default () => {
 
     return (
         <div id="cardsContainer">
-            {recipes.map(recipe => {
-                <Card key={recipe.id} recipe={recipe} />
-            })}
+
         </div>
     )
 }

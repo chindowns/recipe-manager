@@ -13,7 +13,7 @@ const config = {
     data: recipe
 };
 axios(config)
-.then(resp => console.log(resp.data))
+.then(resp => console.log(`Added Recipe: ${recipe.name}`))
 .catch(err => console.log('Error' + err));
 
 })

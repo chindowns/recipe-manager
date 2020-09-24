@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../components/Recipe-Cards'
-import useContext from '../utils/Provider'
+import RecipeCard from '../components/Recipe-Cards';
+import useContext from '../utils/Provider';
 
 export default () => {
    const [state, dispatch] = useContext();
@@ -35,7 +35,7 @@ export default () => {
     return (
         <div id="cardsContainer">
             {recipes.map(recipe => {
-                <Card key={recipe.id} recipe={recipe} />
+                return recipe.name
             })}
         </div>
     )

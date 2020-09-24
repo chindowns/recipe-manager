@@ -1,5 +1,6 @@
 import React from 'react';
-import 'index.css'
+import { Card, Button } from 'react-bootstrap';
+import './index.css';
 
 export default (props) => {
 let recipe = props.recipe;
