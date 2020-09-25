@@ -14,8 +14,8 @@ import ModalSignIn from './components/SignIn-Modal';
 
 function App() {
   const [modalRecipeShow, setModalRecipeShow] = useState(false);
-  const [modalDirectionsShow, setmodalDirectionsShow] = useState(false);
-  const [modalSignInShow, setmodalSignInShow] = useState(false);
+  const [modalDirectionsShow, setModalDirectionsShow] = useState(false);
+  const [modalSignInShow, setModalSignInShow] = useState(false);
   
 return (
   <>
@@ -32,8 +32,8 @@ return (
     </Router>
 
       {/* <ModalAddRecipe show={modalRecipeShow} onHide={() => setModalRecipeShow(false)} /> */}
-      {/* <ModalDirections show={modalDirectionsShow} onHide={() => setmodalDirectionsShow(false)} /> */}
-      {/* <ModalSignIn show={modalSignInShow} onHide={() => setmodalSignInShow(false)} /> */}
+      {/* <ModalDirections show={modalDirectionsShow} onHide={() => setModalDirectionsShow(false)} /> */}
+      {/* <ModalSignIn show={modalSignInShow} onHide={() => setModalSignInShow(false)} /> */}
 
   {/* </Provider> */}
 
