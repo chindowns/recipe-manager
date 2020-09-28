@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Nav, Button, Modal } from 'react-bootstrap';
 import Profile from '../../pages/Profile';
-import ModalSignIn from '../SignIn-Modal';
+import SignIn from '../Modals/SignIn';
 import './index.css'
 
 export default () => {
@@ -19,7 +19,7 @@ export default () => {
                onClick={function(){setShow(true)}} >Sign In</Button>
          </header>
 
-         <ModalSignIn show={show} onHide={() => setShow(false)} />
+         <SignIn show={show} onHide={() => setShow(false)} />
       </>
    )
 }

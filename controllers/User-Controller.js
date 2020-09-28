@@ -17,12 +17,8 @@ module.exports = {
     // },
 
     findOne: (req, res) => {
-        // console.log(req);
-        db.User.findOne({
-            where: {email: req.params.userEmail},
-            include: (db.Recipe)
-        })
-        .then(dbUser => res.json(dbUser))
+        db.User.findOrCreate({ where: { email: req.params.email }})
+        .then(resultArr => res.json(resultArr[0]))
         .catch(err => res.status(422).json(err));
     },
 

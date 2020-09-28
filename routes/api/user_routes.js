@@ -11,8 +11,8 @@ router
 
 // Matches with "/api/user/:userEmail" because we need to get ID from the email
 router
-  .route("/:userEmail")
-  .get(user.findOne)
+  .route("/:email")
+  .get(user.findOrCreate)
 //   .delete(user.remove);
 
 module.exports = router;
