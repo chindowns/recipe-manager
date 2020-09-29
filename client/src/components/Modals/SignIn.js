@@ -9,7 +9,7 @@ export default (props) => {
     const [show, setShow] = useState(null);
 
     // Get current localStorage settings
-    if ("localStorage" in window) {
+  if ("localStorage" in window) {
 
       var  currentUser = localStorage.getItem('userEmail');
       var  emailForSignIn = localStorage.getItem('emailForSignIn');

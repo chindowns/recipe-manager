@@ -4,8 +4,6 @@ const user = require("../../controllers/User-Controller")
 // Matches with "/api/user"
 router
   .route("/")
-  .post(user.create)
-//   .get(user.findAll)
   .put(user.update);
 
 
@@ -13,6 +11,5 @@ router
 router
   .route("/:email")
   .get(user.findOrCreate)
-//   .delete(user.remove);
 
 module.exports = router;
