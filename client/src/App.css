@@ -1,0 +1,10 @@
+#page-container {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+#cardsContainer {
+    display: flex;
+    flex-flow: row wrap;
+}

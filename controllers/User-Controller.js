@@ -11,6 +11,15 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
 
+    findById: (req, res) => {
+        console.log('Getting User by Session ID')
+        db.User.findAll({
+            where: {id: req.params.id}
+        })
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err))
+    },
+
     update: function (req, res) {
         db.User.update(req.body, 
             {where: { email: req.body.email}})

@@ -1,0 +1,22 @@
+.recipe-card {
+	background-color: tomato;
+	box-sizing: border-box;
+    /* padding: 20px; */
+    margin: 20px;
+	outline: 2px solid #9bb4ec;
+	flex: 0 0 22% ;
+}
+
+@include max-width(992px) {
+	.recipe-card {
+		flex-basis: 25%;
+		background-color: red;
+	}
+}
+
+@include max-width(640px) {
+	.recipe-card {
+		flex-basis: 50%;
+		background-color: green;
+	}
+}

@@ -3,10 +3,11 @@ import React from 'react'
 export default () => {
 
    return (
-      <div>
-      <h1>Home page.</h1>
-      <p> /home or /</p>  
-      <h3>Login to view your recipes or add recipes</h3>
+      <div className="centerText">
+      <h1>I am your Recipe Manager</h1>
+      <p>Use me to keep track of your recipes, copied and modified recipes.</p>
+      <p>Search all recipes on this site to get ideas for your next culinary masterpiece</p> 
+      <h3>Sign In to search, view or add recipes</h3>
       </div>
    )
 }

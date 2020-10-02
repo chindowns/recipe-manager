@@ -6,8 +6,8 @@ export default (props) => {
 let recipe = props.recipe;
 console.log(props)
     return (
-    <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={recipe.photo} />
+    <Card className="recipe-card" >
+        <Card.Img  src={recipe.photo} />
         <Card.Body>
             <Card.Title>{recipe.name}</Card.Title>
             {/* <Card.Text>

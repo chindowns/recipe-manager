@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import firebase from '../../utils/Firebase';
 import {Modal, Button} from 'react-bootstrap';
 
@@ -8,13 +9,14 @@ export default (props) => {
     const [emailSent, setEmailSent] = useState(false);
     const [show, setShow] = useState(null);
 
+    const history = useHistory();
+
     // Get current localStorage settings
   if ("localStorage" in window) {
 
       var  currentUser = localStorage.getItem('userEmail');
       var  emailForSignIn = localStorage.getItem('emailForSignIn');
-        console.log(emailForSignIn)
-        console.log(email)
+        // console.log(emailForSignIn)
     }
 
     useEffect(()=>{
@@ -24,12 +26,17 @@ export default (props) => {
     }, [props.show])
 
     function handleShow() {setShow(true)};
-    function handleHide() {setShow(false)};
-    
+    function handleHide() {
+        window.opener=null;
+        window.open('','_self');
+        window.close();
+        setShow(false);
+    };
+        
     function handleSubmit(e) {
     // FIREBASE SignIn by Email Link Settings
         e.preventDefault();
-        console.log(email);
+        // console.log(email);
 
         let url = null;
 
@@ -64,7 +71,6 @@ export default (props) => {
     
     }
 
-
     return (
         !emailSent ?
         <Modal show = {props.show} onHide={props.onHide}>
@@ -91,6 +97,9 @@ export default (props) => {
         <Modal show={props.show} onHide={props.onHide}>
             <Modal.Title>Sign In ... In Process</Modal.Title>
             <Modal.Body>Check your email and click the link to open Your Recipes</Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleHide} >Close</Button>
+            </Modal.Footer>
         </Modal>
     )
 }

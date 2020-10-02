@@ -1,14 +1,18 @@
 const router = require("express").Router();
 const user = require("../../controllers/User-Controller")
 
-// Matches with "/api/user"
 router
+// Matches with "/api/user"
   .route("/")
   .put(user.update);
 
-
-// Matches with "/api/user/:userEmail" because we need to get ID from the email
 router
+// Matches with "/api/user/session"
+  .route("/session/:id")
+  .get(user.findById)
+
+router
+// Matches with "/api/user/:userEmail" because we need to get ID from the email
   .route("/:email")
   .get(user.findOrCreate)
 

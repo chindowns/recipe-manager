@@ -81,7 +81,7 @@ module.exports = {
 
   findAll: function (req, res) {
     db.Recipe.findAll({
-      limit: 25,
+      limit: 24,
       order: [['ratingAverage', 'DESC']],
       include: {
         model: db.Direction,

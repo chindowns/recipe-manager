@@ -1,4 +1,4 @@
-import React from 'react'
+import axios from 'axios';
 
 // Hook to capitalize the first letter of each word
 export const cap1stLetter = (str) => {
@@ -7,3 +7,7 @@ export const cap1stLetter = (str) => {
 
 // Hook to identify current year
 export const currentYear = new Date().getFullYear();
+
+export const getCurrentUser = () => {
+
+}
