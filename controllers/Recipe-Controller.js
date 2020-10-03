@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 const db = require("../models");
 // Set Ingredient name and Tag name to trimmed lower case.
 const setToLowerCase = require('../utils/setToLowerCase')
@@ -114,41 +114,44 @@ module.exports = {
 
   search: function (req, res) {
     // Search all recipes, ingredients and tags that have the search criteria
-    var recipes = [];
+    // var recipes = [];
     // set array for db query results
     
     db.Recipe.findAll({
       // Find all recipes with search criteria in the name
-      where: {name: { [Op.like]: `%${req.params.search}%`}},
+      where: Sequelize.where(Sequelize.fn('lower', Sequelize.col('name')), 'LIKE', `%${req.params.search}%`)
     })
       .then(result => {
-        recipes.push(...result.data);
+        // recipes.push(...result.data);
+        // console.log(recipes);
         // Adds the result array to the recipes array
-        db.Recipe.findAll({
-          include: {
-            model: db.Ingredients,
-            where: { name: { [Op.like]: `%${req.params.search}%` } }
-          }
-        })
-          .then(result => {
-            result => {
-              recipes.push(...result.data);
-              // Adds the result array to the recipes array
-              db.Recipe.findAll({
-                include: {
-                  model: db.Tag,
-                  where: { name: { [Op.like]: `%${req.params.search}%`}}
-                }
-              })
-              .then(result => {
-                recipes.push(...result.data);
-                // Adds the result array to the recipes array then send the recipes array to the client
-                res.json(recipes);
-              })
-              .catch(err => res.status(422).json(err));
-            }
-          })
-          .catch(err => res.status(422).json(err));
+        // db.Recipe.findAll({
+        //   include: {
+        //     model: db.Ingredients,
+        //     where: { name: { [Op.like]: `%${req.params.search}%` } }
+        //   }
+        // })
+        //   .then(result => {
+        //     result => {
+        //       recipes.push(...result.data);
+        //       // Adds the result array to the recipes array
+        //       db.Recipe.findAll({
+        //         include: {
+        //           model: db.Tag,
+        //           where: { name: { [Op.like]: `%${req.params.search}%`}}
+        //         }
+        //       })
+        //       .then(result => {
+        //         recipes.push(...result.data);
+        //         // Adds the result array to the recipes array then send the recipes array to the client
+        //         res.json(recipes);
+        //       })
+        //       .catch(err => res.status(422).json(err));
+        //     }
+        //   })
+        //   .catch(err => res.status(422).json(err));
+        res.json(result);
+        console.log(result);
       })
       .catch(err => res.status(422).json(err));
   },
