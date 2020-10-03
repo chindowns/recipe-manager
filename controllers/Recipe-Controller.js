@@ -113,15 +113,43 @@ module.exports = {
   },
 
   search: function (req, res) {
+    // Search all recipes, ingredients and tags that have the search criteria
+    var recipes = [];
+    // set array for db query results
+    
     db.Recipe.findAll({
-      limit: 25,
-      where: {
-        name: {
-          [Op.like]: `%${req.params.search}%`
-        }
-      }
+      // Find all recipes with search criteria in the name
+      where: {name: { [Op.like]: `%${req.params.search}%`}},
     })
-      .then(dbRecipe => res.json(dbRecipe))
+      .then(result => {
+        recipes.push(...result.data);
+        // Adds the result array to the recipes array
+        db.Recipe.findAll({
+          include: {
+            model: db.Ingredients,
+            where: { name: { [Op.like]: `%${req.params.search}%` } }
+          }
+        })
+          .then(result => {
+            result => {
+              recipes.push(...result.data);
+              // Adds the result array to the recipes array
+              db.Recipe.findAll({
+                include: {
+                  model: db.Tag,
+                  where: { name: { [Op.like]: `%${req.params.search}%`}}
+                }
+              })
+              .then(result => {
+                recipes.push(...result.data);
+                // Adds the result array to the recipes array then send the recipes array to the client
+                res.json(recipes);
+              })
+              .catch(err => res.status(422).json(err));
+            }
+          })
+          .catch(err => res.status(422).json(err));
+      })
       .catch(err => res.status(422).json(err));
   },
 

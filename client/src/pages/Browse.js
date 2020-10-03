@@ -7,6 +7,7 @@ export default (props) => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showAddRecipe, setShowAddRecipe] = useState(false);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         if (!loading) {
@@ -23,14 +24,31 @@ export default (props) => {
         }
     }, [loading])
 
+    function handleSubmit(e) {
+        e.preventDefault();
+    }
+
     console.log(recipes);
     console.log(props.user);
     
     return (
+      <>
+        <div className="form">
+            <form id="search-form" className="form-group form-search" onSubmit={handleSubmit}>
+                <input 
+                    id="search" 
+                    classname="background-green-semitransparent" 
+                    type="text"
+                    name="search"
+                    placeholder="Search Recipes"
+                    onClick={e => setSearch(e.target.value)}
+            </form>
+        </div>
         <Row id="" className="row-col-4">
             {recipes.map(recipe => (
                 <RecipeCard recipe = {recipe} user = {props.user} key = {recipe.id} />
             ))}
         </Row>
+      </>  
     )
 }

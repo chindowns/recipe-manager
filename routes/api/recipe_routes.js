@@ -10,7 +10,7 @@ router
 
 // matches with "/api/recipe/search/:search-:userId"
 router
-  .route("/search/:search-:userId")
+  .route("/search/:search")
   .get(recipe.search)
 
 //matches with "/api/recipe/user/:userid"
