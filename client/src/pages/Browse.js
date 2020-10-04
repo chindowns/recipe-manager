@@ -42,6 +42,7 @@ export default (props) => {
                     name="search"
                     placeholder="Search Recipes"
                     onClick={e => setSearch(e.target.value)}
+                />
             </form>
         </div>
         <Row id="" className="row-col-4">
