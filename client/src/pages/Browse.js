@@ -26,6 +26,12 @@ export default (props) => {
 
     function handleSubmit(e) {
         e.preventDefault();
+        axios.get("api/recipe/search/"+search)
+            .then(result => {
+                if (result.data.length > 0) {
+                    setRecipes(result.data);
+                }})
+            .catch(err => console.log(`Error: ${err}`))
     }
 
     console.log(recipes);

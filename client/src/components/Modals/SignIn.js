@@ -46,7 +46,7 @@ export default (props) => {
             url = 'http://localhost:3000/profile';
         }
 
-        const actionCodeSetting = {
+        const actionCodeSettings = {
             url: url,
             handleCodeInApp: true,
             iOS: {},
