@@ -119,7 +119,16 @@ module.exports = {
     
     db.Recipe.findAll({
       // Find all recipes with search criteria in the name
-      where: Sequelize.where(Sequelize.fn('lower', Sequelize.col('name')), 'LIKE', `%${req.params.search}%`)
+      where: {[Op.or]: [
+        Sequelize.where(Sequelize.fn('lower', Sequelize.col('Recipe.name')), 'LIKE', `%${req.params.search}%`),
+        Sequelize.where(Sequelize.fn('lower', Sequelize.col('Ingredients.name')), 'LIKE', `%${req.params.search}%`),
+        Sequelize.where(Sequelize.fn('lower', Sequelize.col('Tags.name')), 'LIKE', `%${req.params.search}%`)
+      ]},
+      include: [
+        db.Ingredient,
+        db.Tag
+      ]
+
     })
       .then(result => {
         // recipes.push(...result.data);
