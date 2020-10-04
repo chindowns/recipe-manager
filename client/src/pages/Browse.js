@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Row} from 'react-bootstrap';
 import RecipeCard from '../components/Recipe-Cards'
+import { removeDups } from '../utils';
 import axios from 'axios';
 
 export default (props) => {
@@ -28,8 +29,12 @@ export default (props) => {
         e.preventDefault();
         axios.get("api/recipe/search/"+search)
             .then(result => {
-                if (result.data.length > 0) {
-                    setRecipes(result.data);
+                // Use 'removeDups() to remove duplicate recipes
+                // let recipesUnique = removeDups(result.data);
+                let recipesUnique = result.data;
+                // Set recipes only if there are recipes.
+                if (recipesUnique.length > 0) {
+                    setRecipes(recipesUnique);
                 }})
             .catch(err => console.log(`Error: ${err}`))
     }

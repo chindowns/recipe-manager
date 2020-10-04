@@ -8,10 +8,13 @@ export const cap1stLetter = (str) => {
 // Hook to identify current year
 export const currentYear = new Date().getFullYear();
 
-export const sort = (list) => {
-    return list.sort((a, b) => (a.color > b.color) ? 1 : -1)
+// Sorts an array of objects by a property value
+// function takes two arguments "arr" Array and "property" 
+export const sort = (arr, property) => {
+    return arr.sort((a, b) => (a.property > b.property) ? 1 : -1)
 }
 
+// Revmoves duplicate objects from an array based on the recipe id property of 'id'
 export const removeDups = (arr) => {
     return [...new Map(arr.map(item => [item.id, item])).values()]
 }

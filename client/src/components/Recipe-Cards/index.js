@@ -4,7 +4,7 @@ import './index.css';
 
 export default (props) => {
 let recipe = props.recipe;
-console.log(props)
+// console.log(props)
     return (
     <Card className="recipe-card" >
         <Card.Img  src={recipe.photo} />
