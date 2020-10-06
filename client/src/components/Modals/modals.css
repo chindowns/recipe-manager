@@ -1,0 +1,12 @@
+#editIcon {
+    display: inline;
+    position: absolute;
+    right: 5px;
+    padding-left: 5px;
+}
+
+input {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+

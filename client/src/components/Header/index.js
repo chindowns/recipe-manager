@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 // import {useHistory} from 'react-router-dom';
 import { Nav, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SignIn from '../Modals/SignIn';
 import './index.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import {faSignInAlt} from '@fortawesome/free-solid-svg-icons';
 
 export default (props) => {
 
@@ -29,13 +31,15 @@ export default (props) => {
       </Nav>
 
       {user.hasOwnProperty('id') ?
-      user.email :
+      <div><FontAwesomeIcon icon={faUser} /> {user.email}</div> :
       <button 
          id="signInBtn" 
-         className="fas fa-sign-in-alt background-red-semitransparent"
+         className="background-red-semitransparent"
          type="submit"
-         onClick={function(){setShow(true)}} >Sign In
+         onClick={function(){setShow(true)}} >
+            <FontAwesomeIcon icon={faSignInAlt} /> Sign In
       </button>}
+
      </header>
 
       <SignIn 
