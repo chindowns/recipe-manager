@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import firebase, {getUser} from './utils/Firebase'
+import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -8,35 +9,34 @@ import Home from './pages/Home';
 import Browse from './pages/Browse';
 import Profile from './pages/Profile';
 import MyRecipes from './pages/MyRecipes';
-import CheckEmail from './pages/CheckEmail'
+import CheckEmail from './pages/CheckEmail';
 
-// import Provider, {useContext} from './utils/Provider';
 
 function App() {
-  const [user, setUser] = useState({})
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null);
+
   useEffect(()=>{
-    if (loading) {
-     setUser(getUser());
-     setLoading(false);
+    if (!user) {
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function (fbuser) {
+        if (fbuser) {
+          var email = fbuser.email;
+          var emailVerified = fbuser.emailVerified;
+          var uid = fbuser.uid;
+            axios.get(`/api/user/${fbuser.email}`)
+              .then(response => setUser(response.data))
+              .catch(error => console.log(error));
+        }
+      });
+   // [END authstatelistener]
     }
-  },[loading])
-
-  console.log(loading);
-
-  const onClose = () => {
-    console.log("closing window");
-    window.opener = null;
-    window.open('', '_self');
-    window.close();
-  }
+  },[user])
 
 return (
   <div id="page-container">
 
-  {/* <Provider> */}
     <Router>
-      <Header user={user} onClose={onClose} />
+      <Header user={user} />
 
     <Switch>
       <Route exact path="/" component={Home} user={user} />
@@ -47,9 +47,6 @@ return (
     </Switch>
       <Footer user={user} />
     </Router>
-
-  {/* </Provider> */}
-
 
   </div>
 )}

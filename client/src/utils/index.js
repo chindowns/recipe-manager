@@ -19,8 +19,3 @@ export const removeDups = (arr) => {
     return [...new Map(arr.map(item => [item.id, item])).values()]
 }
 
-export const getCurrentUser = (email) => {
-    axios.get(`/api/user/${email}`)
-    .then(result => {return result.data})
-    .catch(err => console.log(err));
-}

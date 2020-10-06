@@ -68,20 +68,6 @@ export default () => {
       }
    },[user])
 
-   /**
-    * initApp handles setting up UI event listeners and registering Firebase auth listeners:
-    *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
-    *    out, and that is where we update the UI.
-    */
-   // function initApp() {
-   //    // Restore the previously used value of the email.
-   //    var email = window.localStorage.getItem('emailForSignIn');
-   //    document.getElementById('email').value = email;
-
-   //    // Automatically signs the user-in using the link.
-   //    handleSignIn();
-
-   // Listening for auth state changes.
    // [START authstatelistener]
    firebase.auth().onAuthStateChanged(function (fbuser) {
       if (fbuser) {
@@ -91,16 +77,8 @@ export default () => {
          var displayName = fbuser.displayName;
          // var email = fbuser.email;
          var emailVerified = fbuser.emailVerified;
-         // var photoURL = fbuser.photoURL;
-         // var isAnonymous = fbuser.isAnonymous;
          var uid = fbuser.uid;
          var providerData = fbuser.providerData;
-         // Update UI.
-         // [START_EXCLUDE]
-         // document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-         // document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-         // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-         // [END_EXCLUDE]
          if (!user) {
             console.log(`Setting User with fbuser`)
             axios.get(`/api/user/${fbuser.email}`)
@@ -111,8 +89,6 @@ export default () => {
 
    });
    // [END authstatelistener]
-
-
 
    function handleError(error) {
       console.log("Error: ", error.code, error.message)

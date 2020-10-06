@@ -31,7 +31,7 @@ export default () => {
 
         & copy; Copyright { currentYear }, All Rights Reserved
 
-        <Button id = "signOut" onClick = {() => signOut()}> 
+        <Button id = "signOut" onClick = {signOut}> 
         Sign Out
         </Button >
     </div>

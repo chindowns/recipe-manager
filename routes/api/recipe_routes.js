@@ -18,7 +18,7 @@ router
   .route("/user/:userId")
   .get(recipe.findUserRecipes)
 
-// Matches with "/api/recipe/one/:recipeId"
+// Matches with "/api/recipe/one/:id"
 router
   .route("/one/:id")
   .get(recipe.findOne)

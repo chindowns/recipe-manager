@@ -52,11 +52,6 @@ export default (props) => {
             iOS: {},
             android: {}
         }
-        // // If previous user is the current user, already logged in.
-        // if (email !== null && email === currentUser) {
-        //     console.log('Current User is Signed In')
-        //     window.history.replace('/profile');
-        // } else {
 
             // SEND email for authentication
             firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import RecipeCard from '../components/Recipe-Cards';
-import useContext from '../utils/Provider';
 
 export default () => {
-   const [state, dispatch] = useContext();
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [user, setUser] = useState(state.user);
+    const [user, setUser] = useState({});
     const [userLoaded, setUserLoaded] = useState(false)
 
     useEffect(() => {
@@ -21,16 +19,16 @@ export default () => {
         }
     }, [loading])
 
-    useEffect(() => {
-      if (!user) {
-      if (!userLoaded) {
-         setUserLoaded(true)
-      }} else {
+//     useEffect(() => {
+//       if (!user) {
+//       if (!userLoaded) {
+//          setUserLoaded(true)
+//       }} else {
       
-      setUser(state.user)
-      setUserLoaded(true);
-    }
-   }, [user, userLoaded])
+//       setUser(user)
+//       setUserLoaded(true);
+//     }
+//    }, [user, userLoaded])
 
     return (
         <div id="cardsContainer">

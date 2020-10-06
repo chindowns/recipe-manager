@@ -118,7 +118,7 @@ module.exports = {
     // set array for db query results
     
     db.Recipe.findAll({
-      // Find all recipes with search criteria in the name
+      // Find all recipes with search criteria in the Recipe Name, Tag Name and Ingredient Name
       where: {[Op.or]: [
         Sequelize.where(Sequelize.fn('lower', Sequelize.col('Recipe.name')), 'LIKE', `%${req.params.search}%`),
         Sequelize.where(Sequelize.fn('lower', Sequelize.col('Ingredients.name')), 'LIKE', `%${req.params.search}%`),
@@ -127,38 +127,10 @@ module.exports = {
       include: [
         db.Ingredient,
         db.Tag
-      ]
-
+      ],
+      attributes: [Recipe.id, Recipe.name, Recipe.photo, Ingredients.name, Tags.name]
     })
       .then(result => {
-        // recipes.push(...result.data);
-        // console.log(recipes);
-        // Adds the result array to the recipes array
-        // db.Recipe.findAll({
-        //   include: {
-        //     model: db.Ingredients,
-        //     where: { name: { [Op.like]: `%${req.params.search}%` } }
-        //   }
-        // })
-        //   .then(result => {
-        //     result => {
-        //       recipes.push(...result.data);
-        //       // Adds the result array to the recipes array
-        //       db.Recipe.findAll({
-        //         include: {
-        //           model: db.Tag,
-        //           where: { name: { [Op.like]: `%${req.params.search}%`}}
-        //         }
-        //       })
-        //       .then(result => {
-        //         recipes.push(...result.data);
-        //         // Adds the result array to the recipes array then send the recipes array to the client
-        //         res.json(recipes);
-        //       })
-        //       .catch(err => res.status(422).json(err));
-        //     }
-        //   })
-        //   .catch(err => res.status(422).json(err));
         res.json(result);
         console.log(result);
       })
@@ -168,9 +140,11 @@ module.exports = {
   findOne: (req, res) => {
     db.Recipe.findOne({
       where: { id: req.params.id },
-      include: [db.User_Recipe,
-      db.Recipe_Ingredient,
-      db.Recipe_Tag]
+      include: [
+        db.User,
+        db.Ingredient,
+        db.Direction,
+        db.Tag]
     })
       .then(dbRecipe => res.json(dbRecipe))
       .catch(err => res.status(422).json(err));

@@ -33,7 +33,7 @@ code {
   }
   
 .background-peach-semitransparent {
-    background-color: #fc9472bf;
+  background-color: #fc9472bf;
   }
 
 .green {
@@ -45,19 +45,19 @@ code {
   }
   
 .background-green-semitransparent {
-    background-color: #cdbe18bf;
+  background-color: #cdbe18bf;
   }
 
 .olive {
-  color: rgb(78, 93, 27);
+  color: olive;
   }
   
 .background-olive {
-  background-color: #4e5d1b;
+  background-color: olive;
   }
   
 .background-olive-semitransparent {
-    background-color: #4e5d1bbf;
+  background-color:rgba(128, 128, 0, 0.75);
   }
   
 .white {
@@ -69,19 +69,19 @@ code {
   }
   
 .background-white-semitransparent {
-    background-color: #e2e2e0bf;
+  background-color: #e2e2e0bf;
   }
 
 .blue {
-  color: #9bb4ec;
+  color: lightblue;
   }
   
 .background-blue {
-  background-color: #9bb4ec;
+  background-color: lightblue;
   }
   
 .background-blue-semitransparent {
-    background-color: #9bb4ecbf;
+  background-color:rgba(173, 216, 230, 0.75);
   }
 
 .darkerblue {
@@ -93,7 +93,7 @@ code {
   }
   
 .background-darkerblue-semitransparent {
-    background-color: #303f79bf;
+  background-color: #303f79bf;
   }
   
 
@@ -103,10 +103,28 @@ code {
 }
 
 .text-shadow-white {
-   text-shadow: 1px 1px 2px #e2e2e0;
+  text-shadow: 1px 1px 2px #e2e2e0;
 }
 
 .text-shadow-darkerblue {
-     text-shadow: 1px 1px 2px #303f79;
-
+  text-shadow: 1px 1px 2px #303f79;
 }
+
+.text-shadow-slate {
+  text-shadow: 1px 1px 2px slategray;
+}
+
+.text-large {
+  font-size: 2rem;
+}
+
+.text-larger {
+  font-size: larger;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* ELEMENT Classes */
+
