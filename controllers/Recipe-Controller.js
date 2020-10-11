@@ -83,12 +83,11 @@ module.exports = {
     db.Recipe.findAll({
       limit: 24,
       order: [['ratingAverage', 'DESC']],
-      include: {
-        model: db.Direction,
-        model: db.Ingredient,
-        model: db.Tag
-        
-      }
+      include: [
+        db.Direction,
+        db.Ingredient,
+        db.Tag,
+      ]
     })
       .then(dbRecipes => res.json(dbRecipes))
       .catch(err => res.status(422).json(err));

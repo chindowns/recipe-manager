@@ -1,12 +1,10 @@
 .recipe-card {
-	box-sizing: border-box;
-    /* padding: 20px; */
-    margin: 20px;
-	outline: 2px solid #9bb4ec;
-	flex: 0 0 22% ;
+    margin: 0px auto 40px;
+	/* outline: 2px inset #9bb4ec; */
+	flex: 0 0 300px ;
 }
 
-@include max-width(992px) {
+/* @include max-width(992px) {
 	.recipe-card {
 		flex-basis: 25%;
 		background-color: red;
@@ -18,4 +16,8 @@
 		flex-basis: 50%;
 		background-color: green;
 	}
-}
+} */
+
+
+
+

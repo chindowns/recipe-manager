@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
 import firebase from '../../utils/Firebase';
 import {Modal, Button} from 'react-bootstrap';
 
@@ -8,16 +7,6 @@ export default (props) => {
     const [email, setEmail] = useState(null);
     const [emailSent, setEmailSent] = useState(false);
     const [show, setShow] = useState(null);
-
-    const history = useHistory();
-
-    // Get current localStorage settings
-  if ("localStorage" in window) {
-
-      var  currentUser = localStorage.getItem('userEmail');
-      var  emailForSignIn = localStorage.getItem('emailForSignIn');
-        // console.log(emailForSignIn)
-    }
 
     useEffect(()=>{
         if(props.show){
@@ -68,7 +57,7 @@ export default (props) => {
 
     return (
         !emailSent ?
-        <Modal show = {props.show} onHide={props.onHide}>
+        <Modal show = {show} onHide={props.onHide}>
             <Modal.Header>
                 <Modal.Title>Sign In</Modal.Title>
             </Modal.Header>

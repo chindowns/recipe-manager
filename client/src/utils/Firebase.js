@@ -33,13 +33,13 @@ export const getUser = () => {
             // console.log(`User is signed in as: \n${fbuser.email}\n${fbuser.uid}\n${fbuser.displayName} `)
             // console.log(fbuser.providerData)
             // User is signed in.
-            var displayName = fbuser.displayName;
+            // var displayName = fbuser.displayName;
             // var email = fbuser.email;
-            var emailVerified = fbuser.emailVerified;
+            // var emailVerified = fbuser.emailVerified;
             // var photoURL = fbuser.photoURL;
             // var isAnonymous = fbuser.isAnonymous;
-            var uid = fbuser.uid;
-            var providerData = fbuser.providerData;
+            // var uid = fbuser.uid;
+            // var providerData = fbuser.providerData;
 
             console.log(`Setting User with fbuser`)
             axios.get(`/api/user/${fbuser.email}`)

@@ -1,38 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {Row} from 'react-bootstrap';
-import RecipeCard from '../components/Recipe-Cards'
-import { removeDups } from '../utils';
+import RecipeCard from '../components/Recipe-Cards';
 import axios from 'axios';
 
 export default (props) => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showAddRecipe, setShowAddRecipe] = useState(false);
     const [search, setSearch] = useState("");
-
-    useEffect(() => {
-        if (!loading) {
-            axios.get("api/recipe")
-            .then(result => {
-                if (result.data.length > 0) {
-                setRecipes(result.data);
-                setLoading(true);
-                } else {
-                    setShowAddRecipe(true);
-                }
-            })
-            .catch(err=> console.log(`Error: ${err}`))
-        }
-    }, [loading])
 
     function handleSubmit(e) {
         e.preventDefault();
         axios.get("api/recipe/search/"+search)
             .then(result => {
-                // Use 'removeDups() to remove duplicate recipes
-                // let recipesUnique = removeDups(result.data);
                 let recipesUnique = result.data;
-                // Set recipes only if there are recipes.
                 if (recipesUnique.length > 0) {
                     setRecipes(recipesUnique);
                 }})
@@ -40,27 +19,27 @@ export default (props) => {
     }
 
     console.log(recipes);
-    console.log(props.user);
+    console.log(loading)
     
     return (
       <>
-        <div className="form">
-            <form id="search-form" className="form-group form-search" onSubmit={handleSubmit}>
+        {/* <div className="form">
+            <form onSubmit={handleSubmit}>
                 <input 
                     id="search" 
-                    classname="background-green-semitransparent" 
+                    className="background-green-semitransparent" 
                     type="text"
                     name="search"
                     placeholder="Search Recipes"
                     onClick={e => setSearch(e.target.value)}
                 />
             </form>
-        </div>
-        <Row id="" className="row-col-4">
+        </div> */}
+        <div id="browseRecipes" className="display-recipes">
             {recipes.map(recipe => (
-                <RecipeCard recipe = {recipe} user = {props.user} key = {recipe.id} />
+                <RecipeCard recipe={recipe} user={props.user} key={recipe.id} />
             ))}
-        </Row>
+        </div>
       </>  
     )
 }

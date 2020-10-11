@@ -4,9 +4,10 @@
     padding-bottom: 50px;
 }
 
-#cardsContainer {
+.display-recipes {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 /* ELEMENT Classes */
@@ -32,4 +33,12 @@ button[type=submit]:focus{
 
 button.btn-small {
     width: 60px;
+}
+
+/* Flex Containers */
+row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 21%;
+    flex-grow: 1;
 }

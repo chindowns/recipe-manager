@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import firebase, {getUser} from './utils/Firebase'
+import firebase from './utils/Firebase'
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
@@ -20,15 +20,12 @@ function App() {
       // [START authstatelistener]
       firebase.auth().onAuthStateChanged(function (fbuser) {
         if (fbuser) {
-          var email = fbuser.email;
-          var emailVerified = fbuser.emailVerified;
-          var uid = fbuser.uid;
             axios.get(`/api/user/${fbuser.email}`)
               .then(response => setUser(response.data))
               .catch(error => console.log(error));
         }
       });
-   // [END authstatelistener]
+      // [END authstatelistener]
     }
   },[user])
 

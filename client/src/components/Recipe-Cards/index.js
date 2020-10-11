@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { Card, Button } from 'react-bootstrap';
-import ViewEdit from '../Modals/ViewEdit'
+import { Card } from 'react-bootstrap';
+import ViewEdit from '../ViewEdit/viewEdit'
 import './index.css';
 
 export default (props) => {
@@ -11,7 +11,7 @@ let recipe = props.recipe;
     return (
     <>
         <Card className="recipe-card" onClick={() => setShow(true)} >
-            <Card.Img  src={recipe.photo} />
+            <Card.Img  height="250px" src={recipe.photo} />
             <Card.Body className="background-red-semitransparent">
                 <Card.Title className="text-shadow-slate">{recipe.name}</Card.Title>
             </Card.Body>
@@ -20,6 +20,7 @@ let recipe = props.recipe;
         <ViewEdit
             show={show}
             recipe={recipe}
+            user={props.user}
             onHide={() => setShow(false)}
         />
 

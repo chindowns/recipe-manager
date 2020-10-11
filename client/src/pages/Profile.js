@@ -48,11 +48,7 @@ export default () => {
                // var isNewUser = result.additionalUserInfo.isNewUser;
             }).catch(function (error) {
                // Handle Errors here.
-               var errorCode = error.code;
-               var errorMessage = error.message;
-               // [START_EXCLUDE]
                handleError(error);
-               // [END_EXCLUDE]
             });
          }
       }
@@ -66,19 +62,19 @@ export default () => {
       } else {
          console.log(user);
       }
-   },[user])
+   })
 
    // [START authstatelistener]
    firebase.auth().onAuthStateChanged(function (fbuser) {
       if (fbuser) {
          console.log(`User is signed in as: \n${fbuser.email}\n${fbuser.uid}\n${fbuser.displayName} `)
-         console.log(fbuser.providerData)
+         // console.log(fbuser.providerData)
          // User is signed in.
-         var displayName = fbuser.displayName;
+         // var displayName = fbuser.displayName;
          // var email = fbuser.email;
-         var emailVerified = fbuser.emailVerified;
-         var uid = fbuser.uid;
-         var providerData = fbuser.providerData;
+         // var emailVerified = fbuser.emailVerified;
+         // var uid = fbuser.uid;
+         // var providerData = fbuser.providerData;
          if (!user) {
             console.log(`Setting User with fbuser`)
             axios.get(`/api/user/${fbuser.email}`)

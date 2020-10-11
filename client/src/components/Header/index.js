@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 // import {useHistory} from 'react-router-dom';
-import { Nav, Button } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import SignIn from '../Modals/SignIn';
 import './index.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

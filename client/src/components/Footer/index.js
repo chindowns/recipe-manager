@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {Button} from 'react-bootstrap'
 import {currentYear} from '../../utils'
 import firebase from '../../utils/Firebase'
@@ -6,7 +6,7 @@ import './index.css'
 
 export default () => {
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
     
     function signOut() {
         firebase.auth().signOut().catch(function (error) {
@@ -25,7 +25,8 @@ export default () => {
             variant="white"
             id="feedback"
             className="text-shadow-white"
-            onClick={() => setShowModal(true)} >
+            // onClick={() => setShowModal(true)}
+            >
             Leave Comment
         </Button>
 

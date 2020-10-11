@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // Hook to capitalize the first letter of each word
 export const cap1stLetter = (str) => {
