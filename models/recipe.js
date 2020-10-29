@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         activeTime: DataTypes.INTEGER,
         totalTime: DataTypes.INTEGER,
         // directions: DataTypes.TEXT,
+        userId: DataTypes.INTEGER,
         source: DataTypes.TEXT,
         sourceLink: DataTypes.STRING,
         ratingAverage: DataTypes.FLOAT,

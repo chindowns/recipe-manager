@@ -23,6 +23,10 @@ router
   .route("/one/:id")
   .get(recipe.findOne)
   // .put(recipe.update)
-  .delete(recipe.delete);
+  .delete(recipe.delete)
+
+router
+  .route("/copy")
+  .post(recipe.copy)
 
 module.exports = router;

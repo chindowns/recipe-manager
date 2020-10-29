@@ -12,51 +12,51 @@ code {
     monospace;
 }
 
-.red {
+.color1 {
   color: #f21519;
 }
 
-.background-red {
+.background-color1 {
   background-color: #f21519;
 }
 
-.background-red-semitransparent {
+.background-color1-semitransparent {
   background-color: #f2181bbf;
 }
 
-.peach {
+.color2 {
   color: #fc9572;
   }
   
-.background-peach {
+.background-color2 {
   background-color: #fc9572;
   }
   
-.background-peach-semitransparent {
+.background-color2-semitransparent {
   background-color: #fc9472bf;
   }
 
-.green {
+.color3 {
   color: #cdbf18;
   }
   
-.background-green {
+.background-color3 {
   background-color: #cdbf18;
   }
   
-.background-green-semitransparent {
+.background-color3-semitransparent {
   background-color: #cdbe18bf;
   }
 
-.olive {
-  color: olive;
+.color4 {
+  color: color4;
   }
   
-.background-olive {
-  background-color: olive;
+.background-color4 {
+  background-color: color4;
   }
   
-.background-olive-semitransparent {
+.background-color4-semitransparent {
   background-color:rgba(128, 128, 0, 0.75);
   }
   
@@ -72,27 +72,27 @@ code {
   background-color: #e2e2e0bf;
   }
 
-.blue {
-  color: lightblue;
+.color5 {
+  color: lightcolor5;
   }
   
-.background-blue {
-  background-color: lightblue;
+.background-color5 {
+  background-color: lightcolor5;
   }
   
-.background-blue-semitransparent {
+.background-color5-semitransparent {
   background-color:rgba(173, 216, 230, 0.75);
   }
 
-.darkerblue {
+.color6 {
   color: #303f79;
   }
   
-.background-darkerblue {
+.background-color6 {
   background-color: #303f79;
   }
   
-.background-darkerblue-semitransparent {
+.background-color6-semitransparent {
   background-color: #303f79bf;
   }
   
@@ -100,6 +100,10 @@ code {
 /* TEXT Classes */
 .center-text {
   text-align: center;
+}
+
+.right-text {
+  text-align: right;
 }
 
 .underline {
@@ -110,7 +114,7 @@ code {
   text-shadow: 1px 1px 2px #e2e2e0;
 }
 
-.shadow-darkerblue {
+.shadow-color6 {
   text-shadow: 1px 1px 2px #303f79;
 }
 

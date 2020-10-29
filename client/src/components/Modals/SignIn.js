@@ -1,27 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState } from 'react';
 import firebase from '../../utils/Firebase';
 import {Modal, Button} from 'react-bootstrap';
 
 export default (props) => {
-
+    console.log(props)
     const [email, setEmail] = useState(null);
     const [emailSent, setEmailSent] = useState(false);
-    const [show, setShow] = useState(null);
 
-    useEffect(()=>{
-        if(props.show){
-            handleShow();
-        }
-    }, [props.show])
-
-    function handleShow() {setShow(true)};
-    function handleHide() {
-        window.opener=null;
-        window.open('','_self');
-        window.close();
-        setShow(false);
-    };
-        
+     
     function handleSubmit(e) {
     // FIREBASE SignIn by Email Link Settings
         e.preventDefault();
@@ -57,7 +43,7 @@ export default (props) => {
 
     return (
         !emailSent ?
-        <Modal show = {show} onHide={props.onHide}>
+        <Modal show = {props.show} onHide={props.onHide}>
             <Modal.Header>
                 <Modal.Title>Sign In</Modal.Title>
             </Modal.Header>
@@ -78,11 +64,11 @@ export default (props) => {
             </Modal.Body>
         </Modal>
         :
-        <Modal show={props.show} onHide={props.onHide}>
+        <Modal show={props.show} onHide={props.onHide} onClose={props.onClode}>
             <Modal.Title>Sign In ... In Process</Modal.Title>
             <Modal.Body>Check your email and click the link to open Your Recipes</Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleHide} >Close</Button>
+                <Button variant="secondary" onClick={props.onClose} >Close</Button>
             </Modal.Footer>
         </Modal>
     )

@@ -39,3 +39,55 @@
 - displays the user's recipes sorted in order of preference and adding.
 - Higher rated recipes are displayed on top
 - latest added recipe sorted next (date or recipe id?)
+
+# ID and CLASSNAME
+- APP.JS
+  - page-container
+
+- HEADER.JS
+  - id="header" className="background-green"
+    - h1 className="red"
+    - Nav className="text-larger text-bold olive"
+  - Modal Signin
+
+- SIGNIN.JS
+  - Modal.Title
+  - Modal.Body
+    - className = "form"
+      - className = "form-group form-add"
+        - className = "form-label"
+          - id = "emailLink"
+          - className = "brn-small"
+
+- HOME.JS
+  - className = "centerText"
+
+- BROWSE.JS
+  - className = "form"
+    - id = "search"   className = "background-green-semitransparent"
+  - id = "browseRecipes"  className = "display-recipes"
+
+- RECIPE-CARDS / INDEX.JS
+  - className = "recipe-card"
+    - className = "background-red-semitransparent"
+  - MODAL VIEWEDIT
+
+- VIEWEDIT.JS
+  - dialogClassName = "modal-80"
+    - id = "view-recipe-card
+      - id = "recipe-header"  className = "large-text darkerblue shadow-slate flex-item">
+      - id = "flex-item  icon"
+
+    - className = "row"
+      - id="photo" className = "column"
+
+    - id = "view-recipe-ingredient"  className = "column"
+
+- INGREDIENT.JS
+  . id = "recipe-ingredient"  classname = "row"
+    - id = "ingredient-name"
+    - id = "ingredient-amount"
+    - id = "ingredient-measurment"
+    - id = "ingredient-specifics"
+
+    

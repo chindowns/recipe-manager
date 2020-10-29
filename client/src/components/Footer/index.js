@@ -17,6 +17,7 @@ export default () => {
             console.log(`Error: ${errorCode} : ${errorMessage}`);
             // [END_EXCLUDE]
         });
+        window.location.reload();
     }
 
     return (

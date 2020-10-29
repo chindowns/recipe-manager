@@ -6,11 +6,6 @@
     padding-left: 5px;
 }
 
-.viewRecipe {
-    width: 500px;
-    max-width: 500px;
-}
-
 .align-right {
     display: inline;
     position: absolute;
@@ -33,4 +28,3 @@ input {
     width: 80vw;
     max-width: 80vw;
 }
-

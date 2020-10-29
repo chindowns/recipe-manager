@@ -15,17 +15,26 @@ import CheckEmail from './pages/CheckEmail';
 function App() {
   const [user, setUser] = useState(null);
 
+  function getUser() {
+    // [START authstatelistener]
+    firebase.auth().onAuthStateChanged(function (fbuser) {
+      if (fbuser) {
+        axios.get(`/api/user/${fbuser.email}`)
+          .then(response => {
+            setUser(response.data);
+          })
+          .catch(error => console.log(error));
+      }
+    });
+      // [END authstatelistener]
+
+  }
+
   useEffect(()=>{
     if (!user) {
-      // [START authstatelistener]
-      firebase.auth().onAuthStateChanged(function (fbuser) {
-        if (fbuser) {
-            axios.get(`/api/user/${fbuser.email}`)
-              .then(response => setUser(response.data))
-              .catch(error => console.log(error));
-        }
-      });
-      // [END authstatelistener]
+      getUser();
+    } else {
+      console.log(user)
     }
   },[user])
 
@@ -35,13 +44,14 @@ return (
     <Router>
       <Header user={user} />
 
-    <Switch>
+    <Switch user={user}>
       <Route exact path="/" component={Home} user={user} />
-      <Route exact path="/browse" component={Browse} user={user} />
+      <Route user={user} exact path="/browse"  component={Browse} />
       <Route exact path="/profile" component={Profile} user={user} />
       <Route exact path="/my-recipes" component={MyRecipes} user={user} />
       <Route expact path="/checkEmail" component={CheckEmail} />
     </Switch>
+
       <Footer user={user} />
     </Router>
 

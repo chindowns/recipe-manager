@@ -1,29 +1,31 @@
 import React, {useState} from 'react';
 import { Card } from 'react-bootstrap';
-import ViewEdit from '../ViewEdit/viewEdit'
-import './index.css';
+import ViewEdit from './viewEdit';
+import './recipe-cards.css';
 
 export default (props) => {
-let recipe = props.recipe;
-    const [show, setShow] = useState(false);
+  console.log(props);
+  let recipe = props.recipe;
+  const [show, setShow] = useState(false);
 
-// console.log(props)
-    return (
-    <>
-        <Card className="recipe-card" onClick={() => setShow(true)} >
-            <Card.Img  height="250px" src={recipe.photo} />
-            <Card.Body className="background-red-semitransparent">
-                <Card.Title className="text-shadow-slate">{recipe.name}</Card.Title>
-            </Card.Body>
-        </Card>
+  console.log(show)
 
-        <ViewEdit
-            show={show}
-            recipe={recipe}
-            user={props.user}
-            onHide={() => setShow(false)}
-        />
+  return (
+  <>
+    <Card className="recipe-card" onClick={() => setShow(true)} >
+      <Card.Img  height="250px" src={recipe.photo} />
+      <Card.Body className="background-red-semitransparent">
+          <Card.Title className="">{recipe.name}</Card.Title>
+      </Card.Body>
+    </Card>
 
-    </>
-    )
+  {show ? <ViewEdit
+      show={show}
+      recipe={props.recipe}
+      user={props.user}
+      onHide={() => setShow(false)}
+    />
+  : null}
+  </>
+  )
 }

@@ -19,6 +19,13 @@ export default (props) => {
    },[props]);
    // const history = useHistory();
 
+   function onClose() {
+      setShow(false);
+      window.opener = null;
+      window.open(' ', '_self');
+      window.close();
+   }
+
    return (
    <>
      <header id="header" className="background-green">
@@ -42,10 +49,15 @@ export default (props) => {
 
      </header>
 
-      <SignIn 
-         show={show} 
-         onHide={() => {setShow(false)}} 
-      />
+      {show ?
+         <SignIn 
+            show={show} 
+            onHide={() => {setShow(false)}}
+            onClose={onClose}
+         />
+      :
+         null
+      }
    </>
    )
 }

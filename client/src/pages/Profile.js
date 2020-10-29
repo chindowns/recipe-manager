@@ -12,8 +12,6 @@ export default () => {
 
    if ("localStorage" in window) {
       var emailForSignIn = window.localStorage.getItem('emailForSignIn')
-      var sessionId = window.sessionStorage.getItem('sessionId')
-      console.log(emailForSignIn, sessionId);
    }
    
    /**
@@ -59,15 +57,17 @@ export default () => {
       if (!user) {
          console.log("signing in to set user")
          handleSignIn();
-      } else {
-         console.log(user);
       }
    })
 
    // [START authstatelistener]
-   firebase.auth().onAuthStateChanged(function (fbuser) {
-      if (fbuser) {
-         console.log(`User is signed in as: \n${fbuser.email}\n${fbuser.uid}\n${fbuser.displayName} `)
+   firebase.auth().onAuthStateChanged((fbuser) => {
+      if (fbuser && !user) {
+         axios.get(`/api/user/${fbuser.email}`)
+            .then(response => setUser(response.data))
+            .catch(error => console.log(error));
+
+         // console.log(`User is signed in as: \n${fbuser.email}\n${fbuser.uid}\n${fbuser.displayName} `)
          // console.log(fbuser.providerData)
          // User is signed in.
          // var displayName = fbuser.displayName;
@@ -75,12 +75,6 @@ export default () => {
          // var emailVerified = fbuser.emailVerified;
          // var uid = fbuser.uid;
          // var providerData = fbuser.providerData;
-         if (!user) {
-            console.log(`Setting User with fbuser`)
-            axios.get(`/api/user/${fbuser.email}`)
-            .then(response => setUser(response.data))
-            .catch(error => console.log(error));
-         }
       } 
 
    });

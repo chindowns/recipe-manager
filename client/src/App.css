@@ -4,12 +4,6 @@
     padding-bottom: 50px;
 }
 
-.display-recipes {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-}
-
 /* ELEMENT Classes */
 button[type=submit] {
     -webkit-border-radius: 5px;
@@ -35,10 +29,39 @@ button.btn-small {
     width: 60px;
 }
 
-/* Flex Containers */
-row {
+#browseRecipes {
+    margin: 0px 10px;
+    border: 1px solid aquamarine;
+}
+
+.form {
+    margin: 5px 25px;
+}
+
+/* Flex Containers*/
+.display-recipes {
     display: flex;
-    flex-wrap: wrap;
-    flex-basis: 21%;
-    flex-grow: 1;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1 ;
+    padding: 5px 25px;
+    border: 1px solid darkgray;
+}
+
+.column {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 100%;
+    border: 1px dashed darkgreen;
 }

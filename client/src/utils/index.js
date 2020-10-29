@@ -18,4 +18,3 @@ export const sort = (arr, property) => {
 export const removeDups = (arr) => {
     return [...new Map(arr.map(item => [item.id, item])).values()]
 }
-
